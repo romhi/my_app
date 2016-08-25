@@ -7,7 +7,7 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
-set :rvm1_ruby_version, '2.2.0'
+set :rvm1_ruby_version, '2.2.1'
 
 set :bundle_binstubs, -> { shared_path.join('bin') }
 set :bundle_path, -> { shared_path.join('vendor','bundle') }
@@ -15,7 +15,7 @@ set :bundle_path, -> { shared_path.join('vendor','bundle') }
 set :deploy_to, "/home/deployer/apps/#{fetch(:application)}"
 set :deploy_user, 'deployer'
 
-server "198.211.121.16", user: 'deployer1', roles: [:web, :app, :db], primary: true
+server "198.211.121.16", user: 'deployer', roles: [:web, :app, :db], primary: true
 
 set :rails_env,   "production"
 set :unicorn_env,  "production"
