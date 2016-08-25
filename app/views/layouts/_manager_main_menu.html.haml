@@ -1,16 +1,12 @@
 %nav.navbar.navbar-default.navbar-fixed-top{role: "navigation"}
   .container.grey-white
     .navbar-header
-      = link_to "Romhi", manager_welcome_index_path, class: "navbar-brand", title: "Romhi"
+      = link_to "Главная страница", manager_welcome_index_path, class: "navbar-brand", title: "Romhi"
+      = link_to "Добровольцы", manager_volunteers_path, class: "navbar-brand", title: "Romhi"
+      = link_to "Документы", manager_documents_path, class: "navbar-brand", title: "Romhi"
     -#= link_to image_tag('logo.png', style: "margin-top: -14px; width: 100px;"), "/", class: "navbar-brand", title: "Aza Fruit"
     .navbar-collapse.collapse
       %ul.nav.navbar-nav
         %li.dropdown
-          = link_to "#", :class => "dropdown-toggle", "data-toggle" => "dropdown" do
-            Справочники менеждера
-            %b.caret
-          %ul.dropdown-menu
-            %li= link_to "Добровольцы", manager_volunteers_path
-            %li= link_to "Документы", manager_documents_path
 
       = render :partial => "layouts/user_bar"

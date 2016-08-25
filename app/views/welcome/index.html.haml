@@ -1,7 +1,5 @@
-%h1 Hello everybody!
-%h2 This is my first deployed app!
-%div Produced by Romhi (roman.khitroff@gmail.com)
+%h2 Приветствую всех на моем сайте!
+
 %div
-  = image_tag "001.jpg"
-%div
-  = link_to "Далее", pages_path
+  = link_to "Вход", new_user_session_path, class: "btn-lg btn-primary" unless current_user
+
