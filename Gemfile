@@ -41,6 +41,7 @@ gem 'momentjs-rails', '>= 2.9.0'
 
 # Use Unicorn as the app server
 gem 'unicorn'
+gem 'mina-unicorn', :require => false
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
