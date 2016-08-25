@@ -15,7 +15,7 @@ set :bundle_path, -> { shared_path.join('vendor','bundle') }
 set :deploy_to, "/home/deployer/apps/#{fetch(:application)}"
 set :deploy_user, 'deployer'
 
-server "198.199.127.41", user: 'deployer1', roles: [:web, :app, :db], primary: true
+server "198.211.121.16", user: 'deployer1', roles: [:web, :app, :db], primary: true
 
 set :rails_env,   "production"
 set :unicorn_env,  "production"
