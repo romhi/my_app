@@ -22,11 +22,11 @@ APP_ROOT="/home/deployer1/apps/organizer/current"
 PID="home/deployer1/apps/organizer/current/tmp/pids/unicorn.pid"
 ENV=production
 
-GEM_HOME="/home/deployer1/.rvm/gems/ruby-2.2.3"
+GEM_HOME="/home/deployer1/.rvm/gems/ruby-2.2.0"
 
 UNICORN_OPTS="-D -E $ENV -c $APP_ROOT/config/unicorn/$ENV.rb"
 
-SET_PATH="cd $APP_ROOT; rvm use 2.2.3"
+SET_PATH="cd $APP_ROOT; rvm use 2.2.0"
 CMD="$SET_PATH; RAILS_ENV = $ENV bundle exec unicorn $UNICORN_OPTS"
 
 
