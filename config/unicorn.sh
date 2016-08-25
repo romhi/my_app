@@ -18,11 +18,11 @@ set -e
 
 # Change these to match your app:
 
-APP_ROOT="/home/deployer/apps/puheet/current"
-PID="home/deployer/apps/puheet/current/tmp/pids/unicorn.pid"
+APP_ROOT="/home/deployer1/apps/organizer/current"
+PID="home/deployer1/apps/organizer/current/tmp/pids/unicorn.pid"
 ENV=production
 
-GEM_HOME="/home/deployer/.rvm/gems/ruby-2.2.3"
+GEM_HOME="/home/deployer1/.rvm/gems/ruby-2.2.3"
 
 UNICORN_OPTS="-D -E $ENV -c $APP_ROOT/config/unicorn/$ENV.rb"
 
