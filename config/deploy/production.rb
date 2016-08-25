@@ -12,8 +12,8 @@ set :rvm1_ruby_version, '2.2.0'
 set :bundle_binstubs, -> { shared_path.join('bin') }
 set :bundle_path, -> { shared_path.join('vendor','bundle') }
 
-set :deploy_to, "/home/deployer1/apps/#{fetch(:application)}"
-set :deploy_user, 'deployer1'
+set :deploy_to, "/home/deployer/apps/#{fetch(:application)}"
+set :deploy_user, 'deployer'
 
 server "198.199.127.41", user: 'deployer1', roles: [:web, :app, :db], primary: true
 
