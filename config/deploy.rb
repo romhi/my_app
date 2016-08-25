@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.6.0'
 
-set :application, 'organizer'
+set :application, 'my_app'
 set :repo_url, 'git@github.com:romhi/my_app.git'
 
 # Default branch is :master
