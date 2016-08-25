@@ -2,7 +2,7 @@
 lock '3.6.0'
 
 set :application, 'organizer'
-set :repo_url, 'git@github.com:romhi/organizer.git'
+set :repo_url, 'git@github.com:romhi/my_app.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
