@@ -7,7 +7,7 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
-set :rvm1_ruby_version, '2.2.3'
+set :rvm1_ruby_version, '2.2.0'
 
 set :bundle_binstubs, -> { shared_path.join('bin') }
 set :bundle_path, -> { shared_path.join('vendor','bundle') }
