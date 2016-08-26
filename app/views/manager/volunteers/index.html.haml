@@ -25,8 +25,8 @@
       Авт
     %th
       Телефон
-    %th
-      EMAIL
+    -#%th
+    -#  EMAIL
     %th
       Комментарии
     %th
@@ -52,8 +52,8 @@
         = yes_or_no_icon(volunteer.car)
       %td.td-nowrap
         = volunteer.phone
-      %td
-        = volunteer.email
+      -#%td
+      -#  = volunteer.email
       %td
         = volunteer.comment
       %td

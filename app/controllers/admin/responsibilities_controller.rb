@@ -26,7 +26,7 @@ class Admin::ResponsibilitiesController < ApplicationController
   end
 
   def update
-    if @region.update responsibility_params
+    if @responsibility.update responsibility_params
       redirect_to admin_responsibilities_path, notice: "Назначение успешно отредактировано!"
     else
       render :edit
