@@ -9,7 +9,7 @@
     %th
       Пользователь
     %th
-      Количество сообщений
+      Сообщения
 
   - @messages.each_with_index do |message, index|
 
@@ -19,4 +19,5 @@
       %td
         = message.user.full_info
       %td
-        = link_to message.qty, admin_message_path(message.id), class: "btn-sm btn-primary"
+        = link_to "Новые: #{message.new.to_i} / Всего: #{message.qty}", admin_message_path(message.id), class: "btn-sm btn-primary"
+

@@ -14,6 +14,7 @@ class Admin::MessagesController < ApplicationController
   def show
     @message = Message.new
     @user = User.find (Message.find params[:id]).user_id
+    Message.where("user_id = ?", @user.id).update_all(admin_read: 1)
     @messages = Message.where("user_id = ?", @user.id)
   end
 
@@ -35,7 +36,7 @@ class Admin::MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:user_id, :message)
+    params.require(:message).permit(:user_id, :message, :author_id)
   end
   
 end

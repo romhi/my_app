@@ -1,6 +1,4 @@
-.top-right-actions
-  = link_to "Добавить", new_admin_message_path, class: "btn btn-primary"
-%h1 Переписка с пользователем #{@user.full_info}
+%h1 Переписка с администратором
 
 %table.table.table-bordered.table-condensed.table-hover
   %tr
@@ -10,7 +8,6 @@
       Пользователь
     %th
       Сообщениее
-    %th.td-18
 
   - @messages.each_with_index do |message, index|
 
@@ -21,13 +18,10 @@
         = message.author.full_info
       %td
         = message.message
-      %td.td-18
-        = delete_trash_link admin_message_path(message)
 
-= simple_form_for [:admin, @message], :html => { class: "horizontal_form" } do |f|
+= simple_form_for @message, :html => { class: "horizontal_form" } do |f|
   = f.input :author_id,  input_html: {value: current_user.id}, as: :hidden
-  = f.input :user_id,  input_html: {value: @user.id}, as: :hidden
   = f.input :message, label: "Сообщение", as: :text
 
   = f.button :submit, "Отпрвить", class: 'btn btn-primary'
-  = link_to "Отмена", admin_messages_path, class: "btn btn-default"
+  = link_to "Отмена", :back, class: "btn btn-default"

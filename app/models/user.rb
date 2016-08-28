@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   belongs_to :responsibility
   belongs_to :city
   belongs_to :congregation
+  has_many :messages
   validates_presence_of :first_name, :last_name, :email, :phone, :congregation_id
   scope :managers, ->{ where("manager = 1").order(:first_name)}
 

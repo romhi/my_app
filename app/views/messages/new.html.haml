@@ -2,7 +2,6 @@
 
 = simple_form_for [:admin, @message], :html => { class: "horizontal_form" } do |f|
   = f.input :author_id,  input_html: {value: current_user.id}, as: :hidden
-  = f.input :user_id, collection: User.managers, label_method: :full_info, value_method: :id, label: "Пользователь", autofocus: true
   = f.input :message, label: "Сообщение"
 
   = f.button :submit, "Сохранить", class: 'btn btn-primary'
