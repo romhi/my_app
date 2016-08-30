@@ -4,6 +4,7 @@ ru:
         user:
           confirmed: 'Вы подтвердили регистрацию'
       failure:
+        unauthenticated: 'Вы не вошли в систему'
         not_found_in_database: 'Такого пользователя не существует!'
         already_authenticated: 'Вход уже был выполнен!'
       registrations:
