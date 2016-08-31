@@ -7,4 +7,16 @@ class Message < ActiveRecord::Base
   scope :new_for_user, -> user_id { where("user_id = ? and user_read is null", user_id) }
   validates_presence_of :user_id
 
+  after_create :send_notification
+
+  def send_notification
+    if author.admin?
+      Messages.new_message(user).deliver
+    else
+      User.admins.each do |user|
+      Messages.new_message(user).deliver
+      end
+    end
+  end
+
 end

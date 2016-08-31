@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :messages
   validates_presence_of :first_name, :last_name, :email, :phone, :congregation_id
   scope :managers, ->{ where("manager = 1").order(:first_name)}
+  scope :admins, -> { where("admin = true") }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
