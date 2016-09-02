@@ -31,7 +31,11 @@ Rails.application.routes.draw do
     resources :regions
     resources :responsibilities
     resources :congregations
-    resources :documents
+    resources :documents do
+      member do
+        get "print_document"
+      end
+    end
     resources :cities
     resources :messages
     resources :vacancies do

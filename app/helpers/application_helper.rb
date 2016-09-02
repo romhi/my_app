@@ -116,5 +116,16 @@ module ApplicationHelper
     "#{volunteer.convenient_start_time.strftime("%H:%M")}-#{volunteer.convenient_start_time.strftime("%H:%M")}"
   end
 
+  def immediate_print
+    <<-HTML
+      <script type="text/javascript">
+        $(document).ready(function(){
+          if (window.print)
+            window.print();
+        });
+      </script>
+    HTML
+  end
+
 end
 

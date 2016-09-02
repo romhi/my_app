@@ -42,6 +42,11 @@ class Admin::DocumentsController < ApplicationController
     redirect_to admin_documents_path, notice: "Документ успешно удален!"
   end
 
+  def print_document
+    @document = Document.find params[:id]
+    render layout: false
+  end
+
   private
 
   def load_model
