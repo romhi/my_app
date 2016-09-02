@@ -35,6 +35,7 @@ gem "font-awesome-rails", '4.2.0.0'
 gem 'maskedinput-rails'
 gem 'momentjs-rails', '>= 2.9.0'
 gem "default_value_for", "~> 3.0.0"
+gem 'russian'
 
 
 # Use ActiveModel has_secure_password

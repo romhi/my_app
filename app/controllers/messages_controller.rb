@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
 
   def index
     current_user.messages.update_all(user_read: 0)
-    @messages = current_user.messages.paginate(page: params[:page], per_page: 20)
+    @messages = current_user.messages.last(20)
     @message = Message.new
   end
 
