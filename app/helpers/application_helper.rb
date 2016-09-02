@@ -113,7 +113,7 @@ module ApplicationHelper
   end
 
   def convenient_time(volunteer)
-    "#{volunteer.convenient_start_time.strftime("%H:%M")}-#{volunteer.convenient_start_time.strftime("%H:%M")}"
+    "#{volunteer.convenient_start_time.strftime("%H:%M")}-#{volunteer.convenient_end_time.strftime("%H:%M")}"
   end
 
   def immediate_print
