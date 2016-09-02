@@ -14,7 +14,7 @@ class Admin::MessagesController < ApplicationController
   def show
     @message = Message.new
     @user = User.find (Message.find params[:id]).user_id
-    Message.where("user_id = ?", @user.id).update_all(admin_read: 1)
+    Message.where("user_id = ?", @user.id).update_all(admin_read: 0)
     @messages = Message.where("user_id = ?", @user.id)
   end
 

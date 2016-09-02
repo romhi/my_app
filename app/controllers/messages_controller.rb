@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    current_user.messages.update_all(user_read: 1)
+    current_user.messages.update_all(user_read: 0)
     @messages = current_user.messages
     @message = Message.new
   end

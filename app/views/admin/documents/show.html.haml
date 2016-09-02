@@ -1,6 +1,8 @@
 .top-right-actions
-  = link_to 'Печать', print_document_admin_document_path{@delivery_inquiry.id}, class: "btn btn-default", target: :blank
+  = link_to "< Документы", :back, class: "btn btn-default"
+  = link_to 'Распечатать', print_document_admin_document_path{@delivery_inquiry.id}, class: "btn btn-primaryl", target: :blank
 %h1
   = @document.title
 %div
   = @document.text.html_safe
+

@@ -21,7 +21,11 @@ Rails.application.routes.draw do
 
   namespace :manager do
     resources :volunteers
-    resources :documents
+    resources :documents do
+      member do
+        get "print_document"
+      end
+    end
     resources :welcome
     resources :messages
   end

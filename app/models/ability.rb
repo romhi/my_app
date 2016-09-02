@@ -33,7 +33,7 @@ class Ability
         can :manage, :all
       elsif user.manager == 1
         can [:index, :new, :create, :update, :destroy, :edit], Volunteer
-        can [:index, :show], Document
+        can [:index, :show, :print_document], Document
         can [:index], :welcome
       else
         can [:index], City

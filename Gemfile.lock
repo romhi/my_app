@@ -82,6 +82,8 @@ GEM
       sort_alphabetical (~> 1.0)
     currencies (0.4.2)
     debug_inspector (0.0.2)
+    default_value_for (3.0.1)
+      activerecord (>= 3.2.0, < 5.0)
     devise (4.2.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -242,6 +244,7 @@ DEPENDENCIES
   capistrano3-unicorn
   coffee-rails (~> 4.1.0)
   country_select
+  default_value_for (~> 3.0.0)
   devise
   font-awesome-rails (= 4.2.0.0)
   haml (~> 4.0.5)

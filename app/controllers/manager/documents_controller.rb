@@ -11,4 +11,9 @@ class Manager::DocumentsController < ApplicationController
     @document = Document.find params[:id]
   end
 
+  def print_document
+    @document = Document.find params[:id]
+    render layout: false
+  end
+
 end

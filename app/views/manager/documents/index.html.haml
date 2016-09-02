@@ -4,6 +4,6 @@
 
   %tr
     %td.td-18
-      = index + 1
+      -#= index + 1
     %td
-      = link_to document.title, manager_document_path(document)
+      = link_to document.title, manager_document_path(document), class: "btn btn-primary"
