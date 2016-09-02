@@ -7,7 +7,7 @@ class Message < ActiveRecord::Base
   scope :new_for_user, -> user_id { where("user_id = ? and user_read = 1", user_id) }
   default_value_for :user_read, 1
   default_value_for :admin_read, 1
-  validates_presence_of :user_id
+  validates_presence_of :user_id, :author_id
 
   after_create :send_notification
 
