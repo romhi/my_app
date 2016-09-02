@@ -15,7 +15,7 @@ class Admin::MessagesController < ApplicationController
     @message = Message.new
     @user = User.find (Message.find params[:id]).user_id
     Message.where("user_id = ?", @user.id).update_all(admin_read: 0)
-    @messages = Message.where("user_id = ?", @user.id).paginate(page: params[:page], per_page: 20)
+    @messages = Message.where("user_id = ?", @user.id).last(20)
   end
 
   def create
