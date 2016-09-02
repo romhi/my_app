@@ -1,23 +1,13 @@
 %h1 Переписка с администратором
 
-%table.table.table-bordered.table-condensed.table-hover
-  %tr
-    %th.td-18
-      \#
-    %th
-      Пользователь
-    %th
-      Сообщениее
-
-  - @messages.each_with_index do |message, index|
-
-    %tr
-      %td.td-18
-        = index + 1
-      %td
-        = message.author.full_info
-      %td
-        = message.message
+- @messages.each do |message|
+  %h4
+    = message.author.full_info
+    \:
+  %div(style="#{'font-weight: bold;' if message.author.admin?  }")
+    = message.message
+  %div
+    ***
 
 = simple_form_for @message, :html => { class: "horizontal_form" } do |f|
   = f.input :author_id,  input_html: {value: current_user.id}, as: :hidden
