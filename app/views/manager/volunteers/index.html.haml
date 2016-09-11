@@ -37,7 +37,7 @@
       %td
         = index + 1
       %td
-        = edit_link [:edit,:admin , volunteer]
+        = edit_link [:edit,:manager , volunteer]
       %td
         = volunteer.full_info
       %td.td-nowrap
@@ -59,6 +59,6 @@
       %td
         = volunteer.vacancy_id
       %td
-        = delete_link [:admin, volunteer]
+        = delete_link [:manager, volunteer]
 
 
