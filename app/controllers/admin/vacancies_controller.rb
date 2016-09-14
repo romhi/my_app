@@ -40,12 +40,6 @@ class Admin::VacanciesController < ApplicationController
 
   def managing
     @vacancies1 = Vacancy.by_location(1)
-    @vacancies2 = Vacancy.by_location(2)
-    @vacancies3 = Vacancy.by_location(3)
-    @vacancies4 = Vacancy.by_location(4)
-    @vacancies5 = Vacancy.by_location(5)
-    @vacancies6 = Vacancy.by_location(6)
-    @vacancies7 = Vacancy.by_location(7)
   end
 
   def add_volunteer
@@ -56,7 +50,7 @@ class Admin::VacanciesController < ApplicationController
     else
       vacancy.volunteer_id = nil
     end
-    redirect_to managing_admin_vacancies_path, notice: "Изменения сохранены" if vacancy.save
+    render :managing, notice: "Изменения сохранены" if vacancy.save
   end
 
   private

@@ -14,13 +14,14 @@
       = link_to Vacancy.count, admin_vacancies_path, class: "btn btn-warning"
     .btn-group.navbar-btn.pull-right.right-bar(title="Количество добровольцев")
       = link_to Volunteer.count, admin_volunteers_path, class: "btn btn-success"
+
   - else
     .btn-group.navbar-btn.right-bar.pull-right
       = link_to "Новые сообщения (#{Message.new_for_user(current_user).count || 0})", messages_path, class: "btn #{Message.new_for_user(current_user).count > 0 ? 'btn-primary' : 'btn-default'}"
-    .btn-group.navbar-btn.pull-right.right-bar(title="Количество вакансий")
-      = link_to Vacancy.count, '', class: "btn btn-warning"
+    .btn-group.navbar-btn.pull-right.right-bar(title="Не хватает добровольцев")
+      = link_to Vacancy.count - Volunteer.count, '', class: "btn btn-danger"
     .btn-group.navbar-btn.pull-right.right-bar(title="Количество добровольцев")
-      = link_to Volunteer.count, '', class: "btn btn-success"
+      = link_to Volunteer.count, admin_volunteers_path, class: "btn btn-success"
 
 
 
