@@ -1,5 +1,6 @@
 = simple_form_for [:admin, @vacancy], :html => { class: "vertical_form"  } do |f|
   = f.input :name, label: "Наименование", autofocus: true
+  = f.input :number, label: "Номер"
   = f.input :starts_at, label: "Начало", as: :time
   = f.input :ends_at, label: "Конец", as: :time
   = f.input :comment, label: "Комментарий", as: :text

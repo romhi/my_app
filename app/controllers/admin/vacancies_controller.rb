@@ -6,7 +6,7 @@ class Admin::VacanciesController < ApplicationController
   before_action :load_model, only: [:edit, :update, :destroy]
 
   def index
-    @vacancies = Vacancy.order(:name)
+    @vacancies = Vacancy.order(:number)
   end
 
   def new
@@ -39,7 +39,24 @@ class Admin::VacanciesController < ApplicationController
   end
 
   def managing
-    @vacancies = Vacancy.order(:name)
+    @vacancies1 = Vacancy.by_location(1)
+    @vacancies2 = Vacancy.by_location(2)
+    @vacancies3 = Vacancy.by_location(3)
+    @vacancies4 = Vacancy.by_location(4)
+    @vacancies5 = Vacancy.by_location(5)
+    @vacancies6 = Vacancy.by_location(6)
+    @vacancies7 = Vacancy.by_location(7)
+  end
+
+  def add_volunteer
+    vacancy = Vacancy.find(params[:id])
+    if params[:volunteer_id].present?
+      volunteer = Volunteer.find(params[:volunteer_id])
+      vacancy.volunteer = volunteer
+    else
+      vacancy.volunteer_id = nil
+    end
+    redirect_to managing_admin_vacancies_path, notice: "Изменения сохранены" if vacancy.save
   end
 
   private
@@ -49,7 +66,7 @@ class Admin::VacanciesController < ApplicationController
   end
 
   def vacancy_params
-    params.require(:vacancy).permit(:name, :comment, :starts_at, :ends_at)
+    params.require(:vacancy).permit(:name, :comment, :starts_at, :ends_at, :number, :volunteer_id)
   end
   
 end

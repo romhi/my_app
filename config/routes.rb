@@ -43,6 +43,9 @@ Rails.application.routes.draw do
     resources :cities
     resources :messages
     resources :vacancies do
+      member do
+        post 'add_volunteer'
+      end
       collection do
         get "managing"
       end

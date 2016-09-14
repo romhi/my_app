@@ -8,7 +8,7 @@ class Admin::UsersController < ApplicationController
   def index
     scope = User.all
     scope = scope.where("email ilike :part or first_name ilike :part or last_name ilike :part or phone ilike :part", part: "%#{params[:part]}%") if params[:part].present?
-    @users = scope.paginate(page: params[:page], per_page: 10)
+    @users = scope.paginate(page: params[:page], per_page: 20)
   end
 
   def show

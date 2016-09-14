@@ -1,32 +1,42 @@
-.top-right-actions
-  = link_to "Добавить", new_admin_vacancy_path, class: "btn btn-primary"
-%h1 Собрания (#{@vacancies.count})
-
 %table.table.table-bordered.table-condensed.table-hover
   %tr
-    %th.td-18
-      \#
-    %th.td-18
     %th
-      Название
-    %th
-      Время
-    %th
-      Комментарии
-    %th.td-18
-
-  - @vacancies.each_with_index do |vacancy, index|
-
+      Пост №1 за сценой (возле комнаты комитета конгресса)
+%table.table.table-bordered.table-condensed.table-hover
+  - Vacancy.by_location(1).each_with_index do |vacancy, index|
     %tr
-      %td.td-18
-        = index + 1
-      %td.td-18
-        = admin_edit_link(vacancy)
-      %td
-        = vacancy.name
-      %td
-        #{vacancy.starts_at.strftime("%H:%M")}-#{vacancy.ends_at.strftime("%H:%M")}
-      %td
-        = vacancy.comment
-      %td.td-18
-        = delete_trash_link admin_vacancy_path(vacancy)
+      = simple_form_for :volunteer, url: "/admin/volunteers", method: :get, html: { style: "display: inline-block;", class: "form-inline" } do |f|
+        %td.td-18
+          = index + 1
+        %td
+          = vacancy_full_info(vacancy)
+        %td
+          = f.input :vacancy_id, label: false, collection: Volunteer.order(:congregation_id), label_method: :full_info, value_method: :id, include_blank: "<ВЫБРАТЬ ДОБРОВОЛЬЦА>", selected: vacancy.volunteer_id, input_html: {id: "#{vacancy.id}"}
+
+
+  -#
+  -#- @vacancies.each_with_index do |vacancy, index|
+  -#
+  -#  %tr
+  -#    %td.td-18
+  -#      = index + 1
+  -#    %td.td-18
+  -#      = admin_edit_link(vacancy)
+  -#    %td
+  -#      = vacancy.name
+  -#    %td
+  -#      #{vacancy.starts_at.strftime("%H:%M")}-#{vacancy.ends_at.strftime("%H:%M")}
+  -#    %td
+  -#      = vacancy.comment
+  -#    %td.td-18
+  -#      = delete_trash_link admin_vacancy_path(vacancy)
+:javascript
+  $(":input").change(function() {
+    var vac_id = $(this).attr('id')
+    var vol_id = $(this).val()
+    $.ajax({
+      type: "POST",
+      url: '/admin/vacancies/' + vac_id + '/add_volunteer?volunteer_id=' + vol_id,
+    });
+  });
+/admin/vacancies/:id/add_volunteer(.:format)

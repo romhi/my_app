@@ -2,7 +2,7 @@
   = simple_form_for :volunteer, url: "/admin/volunteers", method: :get, html: { style: "display: inline-block;", class: "form-inline" } do |f|
     = f.input :vacancy, label: false, collection: {"ВСЕ": nil, "С НАЗНАЧЕНИЕМ": 1, "БЕЗ НАЗНАЧЕНИЯ": 2}, include_blank: false, selected: @vacancy
     = f.input :order, label: false, collection: [["ПО ФАМИЛИИ", "last_name"], ["ПО СОБРАНИЮ", "congregations.name"]], include_blank: false, selected: @order
-    = f.input :congregation_id, label: false, collection: Congregation.order(:name), label_method: :full_info, value_method: :id, include_blank: "<ВЫБРАТЬ ГОРОД>", selected: @congregation_id
+    = f.input :congregation_id, label: false, collection: Congregation.order(:name), label_method: :full_info, value_method: :id, include_blank: "<ВЫБРАТЬ СОБРАНИЕ>", selected: @congregation_id
     = f.input :part, label: false, input_html: { value: "#{@part}" }
     = f.submit "Найти", class: "btn btn-default"
 

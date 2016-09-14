@@ -1,6 +1,6 @@
 .top-right-actions
   = link_to "Добавить", new_admin_vacancy_path, class: "btn btn-primary"
-%h1 Собрания (#{@vacancies.count})
+%h1 Вакансии на служение (#{@vacancies.count})
 
 %table.table.table-bordered.table-condensed.table-hover
   %tr
@@ -23,7 +23,7 @@
       %td.td-18
         = admin_edit_link(vacancy)
       %td
-        = vacancy.name
+        #{vacancy.number}) #{vacancy.name}
       %td
         #{vacancy.starts_at.strftime("%H:%M")}-#{vacancy.ends_at.strftime("%H:%M")}
       %td

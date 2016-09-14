@@ -116,6 +116,10 @@ module ApplicationHelper
     "#{volunteer.convenient_start_time.strftime("%H:%M")}-#{volunteer.convenient_end_time.strftime("%H:%M")}"
   end
 
+  def vacancy_full_info(vacancy)
+    "#{vacancy.number}) #{vacancy.name} #{vacancy.starts_at.strftime("%H:%M")}-#{vacancy.ends_at.strftime("%H:%M")}"
+  end
+
   def immediate_print
     <<-HTML
       <script type="text/javascript">
