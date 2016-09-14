@@ -21,7 +21,7 @@
     .btn-group.navbar-btn.pull-right.right-bar(title="Не хватает добровольцев")
       = link_to Vacancy.count - Volunteer.count, '', class: "btn btn-danger"
     .btn-group.navbar-btn.pull-right.right-bar(title="Количество добровольцев")
-      = link_to Volunteer.count, admin_volunteers_path, class: "btn btn-success"
+      = link_to Volunteer.count, manager_volunteers_path, class: "btn btn-success"
 
 
 
