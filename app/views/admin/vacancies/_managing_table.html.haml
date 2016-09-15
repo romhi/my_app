@@ -1,0 +1,31 @@
+%div(style="position: fixed")
+  = render partial: "layouts/flash_messages"
+
+- [1,2,3,4,5,6,7,8].each do |number|
+  %table.table.table-bordered.table-condensed.table-hover
+    %tr
+      %th
+        = Vacancy.by_location(number).first.try(:name)
+  %table.table.table-bordered.table-condensed.table-hover
+    - Vacancy.by_location(number).each_with_index do |vacancy, index|
+      %tr
+        = simple_form_for :volunteer, url: "/admin/volunteers", method: :get, html: { style: "display: inline-block;", class: "form-inline" } do |f|
+          %td.td-18
+            = index + 1
+          %td
+            = vacancy_full_info(vacancy)
+          %td
+            - volunteers = vacancy.try(:volunteer).present? ? (Volunteer.without_vacancy << vacancy.try(:volunteer)) : Volunteer.without_vacancy
+            = f.input :vacancy_id, label: false, collection: volunteers, label_method: :full_info, value_method: :id, include_blank: "<ВЫБРАТЬ ДОБРОВОЛЬЦА>", selected: vacancy.volunteer_id, input_html: {id: "#{vacancy.id}"}
+
+
+:javascript
+  $(":input").change(function() {
+    var vac_id = $(this).attr('id')
+    var vol_id = $(this).val()
+    $.ajax({
+      type: "POST",
+      url: '/admin/vacancies/' + vac_id + '/add_volunteer?volunteer_id=' + vol_id,
+      remote: "true",
+    });
+  });

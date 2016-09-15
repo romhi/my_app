@@ -1,49 +1,6 @@
-%table.table.table-bordered.table-condensed.table-hover
-  %tr
-    %th
-      Пост №1 за сценой (возле комнаты комитета конгресса)
-%table.table.table-bordered.table-condensed.table-hover
-  - Vacancy.by_location(1).each_with_index do |vacancy, index|
-    %tr
-      = simple_form_for :volunteer, url: "/admin/volunteers", method: :get, html: { style: "display: inline-block;", class: "form-inline" } do |f|
-        %td.td-18
-          = index + 1
-        %td
-          = vacancy_full_info(vacancy)
-        %td
-          - volunteers = vacancy.try(:volunteer).present? ? (Volunteer.without_vacancy(vacancy.id) << vacancy.try(:volunteer)) : Volunteer.without_vacancy(vacancy.id)
-          = f.input :vacancy_id, label: false, collection: volunteers, label_method: :full_info, value_method: :id, include_blank: "<ВЫБРАТЬ ДОБРОВОЛЬЦА>", selected: vacancy.volunteer_id, input_html: {id: "#{vacancy.id}"}
-%table.table.table-bordered.table-condensed.table-hover
-  %tr
-    %th
-      Большой зал. Пост №2 лестницы на сцену и сектора
-%table.table.table-bordered.table-condensed.table-hover
-  - Vacancy.by_location(2).each_with_index do |vacancy, index|
-    %tr
-      = simple_form_for :volunteer, url: "/admin/volunteers", method: :get, html: { style: "display: inline-block;", class: "form-inline" } do |f|
-        %td.td-18
-          = index + 1
-        %td
-          = vacancy_full_info(vacancy)
-        %td
-          - volunteers = vacancy.try(:volunteer).present? ? (Volunteer.without_vacancy(vacancy.id) << vacancy.try(:volunteer)) : Volunteer.without_vacancy(vacancy.id)
-          = f.input :vacancy_id, label: false, collection: volunteers, label_method: :full_info, value_method: :id, include_blank: "<ВЫБРАТЬ ДОБРОВОЛЬЦА>", selected: vacancy.volunteer_id, input_html: {id: "#{vacancy.id}"}
-  -#
-  -#- @vacancies.each_with_index do |vacancy, index|
-  -#
-  -#  %tr
-  -#    %td.td-18
-  -#      = index + 1
-  -#    %td.td-18
-  -#      = admin_edit_link(vacancy)
-  -#    %td
-  -#      = vacancy.name
-  -#    %td
-  -#      #{vacancy.starts_at.strftime("%H:%M")}-#{vacancy.ends_at.strftime("%H:%M")}
-  -#    %td
-  -#      = vacancy.comment
-  -#    %td.td-18
-  -#      = delete_trash_link admin_vacancy_path(vacancy)
+#managing_table
+  = render :partial => "managing_table"
+
 :javascript
   $(":input").change(function() {
     var vac_id = $(this).attr('id')
@@ -51,7 +8,6 @@
     $.ajax({
       type: "POST",
       url: '/admin/vacancies/' + vac_id + '/add_volunteer?volunteer_id=' + vol_id,
+      remote: "true",
     });
   });
-
-/admin/vacancies/:id/add_volunteer(.:format)

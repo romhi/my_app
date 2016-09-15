@@ -60,7 +60,7 @@
       %td
         = volunteer.comment
       %td
-        = volunteer.vacancy_id
+        = volunteer.vacancy.try(:full_info)
       %td
         = delete_link [:admin, volunteer]
 
