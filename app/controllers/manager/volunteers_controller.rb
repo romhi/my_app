@@ -7,9 +7,7 @@ class Manager::VolunteersController < ApplicationController
 
   def index
     @congregation = current_user.congregation
-    scope = Volunteer.by_congregation_id(@congregation.id)
-    scope = scope.where("email ilike :part or first_name ilike :part or last_name ilike :part or phone ilike :part", part: "%#{params[:part]}%") if params[:part].present?
-    @volunteers = scope
+    @volunteers = Volunteer.by_congregation_id(@congregation.id)
   end
 
   def show
@@ -40,8 +38,18 @@ class Manager::VolunteersController < ApplicationController
   end
 
   def destroy
-    @volunteer.destroy
-    redirect_to manager_volunteers_path
+    if @volunteer.vacancy.present?
+      redirect_to manager_volunteers_path, alert: "Нельзя удалить уже назначенного добровольца! Напишите Администратору!" if @volunteer.vacancy.present?
+    else
+      @volunteer.destroy
+      redirect_to manager_volunteers_path, notice: "Доброволец успешно удален!"
+    end
+  end
+
+  def print
+    @congregation = current_user.congregation
+    @volunteers = Volunteer.by_congregation_id(@congregation.id)
+    render layout: false
   end
 
   private

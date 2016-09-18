@@ -54,6 +54,16 @@ class Admin::VolunteersController < ApplicationController
     redirect_to admin_volunteers_path
   end
 
+  def print
+    @volunteers = Volunteer.order(:congregation_id).order(:responsibility_id)
+    render layout: false
+  end
+
+  def print_managing
+    @vacancies = Vacancy.order(:number)
+    render layout: false
+  end
+
   private
 
   def params_volunteer

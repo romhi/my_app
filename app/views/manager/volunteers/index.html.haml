@@ -1,7 +1,5 @@
 .top-right-actions
-  = simple_form_for :volunteer, url: "/manager/volunteers", method: :get, html: { style: "display: inline-block;", class: "form-inline" } do |f|
-    = f.input :part, label: false, input_html: { name: "part", value: "#{params[:part]}" }
-    = f.submit "Найти", class: "btn btn-default"
+  = link_to "Печать", print_manager_volunteers_path, class: "btn btn-default", target: '_blank'
   = link_to "Добавить", new_manager_volunteer_path, class: "btn btn-primary"
 
 %h1 Добровольцы собрания #{current_user.congregation.name} (#{@volunteers.count})

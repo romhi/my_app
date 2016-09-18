@@ -20,7 +20,11 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
 
   namespace :manager do
-    resources :volunteers
+    resources :volunteers do
+      collection do
+        get "print"
+      end
+    end
     resources :documents do
       member do
         get "print_document"
@@ -50,7 +54,12 @@ Rails.application.routes.draw do
         get "managing"
       end
     end
-    resources :volunteers
+    resources :volunteers do
+      collection do
+        get "print"
+        get "print_managing"
+      end
+    end
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

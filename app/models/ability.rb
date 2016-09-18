@@ -32,7 +32,7 @@ class Ability
       if user.admin
         can :manage, :all
       elsif user.manager == 1
-        can [:index, :new, :create, :update, :destroy, :edit], Volunteer
+        can [:index, :new, :create, :update, :destroy, :edit, :print], Volunteer
         can [:index, :show, :print_document], Document
         can [:index], :welcome
       else

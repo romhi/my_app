@@ -15,6 +15,10 @@ class Volunteer < ActiveRecord::Base
     "#{congregation.city.region.name[0]}.обл. #{congregation.name} #{last_name.strip} #{first_name[0]} #{age}л. / (#{responsibility.name}) /  время #{convenient_time} / #{"Удица" if outdoor} / ком. #{comment}"
   end
 
+  def full_info_for_print
+    "#{congregation.city.region.name[0]}.обл. #{congregation.name} #{last_name.strip} #{first_name} #{age}л. / (#{responsibility.name}) /  время #{convenient_time}"
+  end
+
   def convenient_time
     "#{convenient_start_time.strftime("%H:%M")}-#{convenient_end_time.strftime("%H:%M")}"
   end
