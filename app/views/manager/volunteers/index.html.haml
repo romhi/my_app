@@ -39,7 +39,7 @@
       %td
         = edit_link [:edit,:manager , volunteer]
       %td
-        = volunteer.full_info
+        #{volunteer.last_name} #{volunteer.first_name}
       %td.td-nowrap
         = convenient_time(volunteer)
       %td.td-center.pointer(title="Будет к 8:00")

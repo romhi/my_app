@@ -12,7 +12,7 @@ class Volunteer < ActiveRecord::Base
                         :will_be_until_17, :outdoor, :phone, :responsibility_id
 
   def full_info
-    "#{congregation.city.region.name[0]}.обл. #{congregation.name} #{last_name.strip} #{first_name[0]} #{age}л. / (#{responsibility.name}) /  время #{convenient_time} / #{"Удица" if outdoor} / доп. #{comment}"
+    "#{congregation.city.region.name[0]}.обл. #{congregation.name} #{last_name.strip} #{first_name[0]} #{age}л. / (#{responsibility.name}) /  время #{convenient_time} / #{"Удица" if outdoor} / ком. #{comment}"
   end
 
   def convenient_time

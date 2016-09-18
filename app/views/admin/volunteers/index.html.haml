@@ -30,8 +30,8 @@
       Телефон
     -#%th
     -#  EMAIL
-    %th
-      Комментарии
+    -#%th
+    -#  Комментарии
     %th
       Время и место служения
     %th.td-18
@@ -57,8 +57,8 @@
         = volunteer.phone
       -#%td
       -#  = volunteer.email
-      %td
-        = volunteer.comment
+      -#%td
+      -#  = volunteer.comment
       %td
         = volunteer.vacancy.try(:full_info)
       %td
