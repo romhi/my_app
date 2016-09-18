@@ -19,7 +19,7 @@ class Admin::VolunteersController < ApplicationController
       scope = scope.where("vacancy_id is not null") if @vacancy == "1"
       scope = scope.order("#{@order}") if @order.present?
     end
-    @volunteers = scope.paginate(page: params[:page], per_page: 10)
+    @volunteers = scope
   end
 
   def show

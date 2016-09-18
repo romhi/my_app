@@ -8,7 +8,7 @@
         = Vacancy.by_location(number).first.try(:name)
   %table.table.table-bordered.table-condensed.table-hover
     - Vacancy.by_location(number).each_with_index do |vacancy, index|
-      %tr
+      %tr(style="#{'background-color: #d6fdc2' if vacancy.try(:volunteer).present?}")
         = simple_form_for :volunteer, url: "/admin/volunteers", method: :get, html: { style: "display: inline-block;", class: "form-inline" } do |f|
           %td.td-18
             = index + 1

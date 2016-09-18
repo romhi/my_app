@@ -9,7 +9,7 @@ class Manager::VolunteersController < ApplicationController
     @congregation = current_user.congregation
     scope = Volunteer.by_congregation_id(@congregation.id)
     scope = scope.where("email ilike :part or first_name ilike :part or last_name ilike :part or phone ilike :part", part: "%#{params[:part]}%") if params[:part].present?
-    @volunteers = scope.paginate(page: params[:page], per_page: 10)
+    @volunteers = scope
   end
 
   def show
