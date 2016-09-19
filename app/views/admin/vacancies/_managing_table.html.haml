@@ -1,6 +1,4 @@
--#%div(style="position: fixed")
--#  = render partial: "layouts/flash_messages"
-
+- without_vacancy = Volunteer.without_vacancy
 - [1,2,3,4,5,6,7,8].each do |number|
   %table.table.table-bordered.table-condensed.table-hover
     %tr
@@ -15,7 +13,7 @@
           %td
             = vacancy_full_info(vacancy)
           %td
-            - volunteers = vacancy.try(:volunteer).present? ? (Volunteer.without_vacancy << vacancy.try(:volunteer)) : Volunteer.without_vacancy
+            - volunteers = vacancy.try(:volunteer).present? ? (without_vacancy << vacancy.try(:volunteer)) : Volunteer.without_vacancy
             = f.input :vacancy_id, label: false, collection: volunteers, label_method: :full_info, value_method: :id, include_blank: "<ВЫБРАТЬ ДОБРОВОЛЬЦА>", selected: vacancy.volunteer_id, input_html: {id: "#{vacancy.id}"}
 
 

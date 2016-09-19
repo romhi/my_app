@@ -50,19 +50,7 @@ class Admin::VacanciesController < ApplicationController
     else
       vacancy.volunteer_id = nil
     end
-    if vacancy.save
-      if params[:volunteer_id].present?
-        respond_to do |format|
-          format.js {  flash[:notice] = "#{volunteer.full_info} назначен в #{vacancy.name}" }
-        end
-      else
-        respond_to do |format|
-          format.js {  flash[:notice] = "Удалено" }
-        end
-      end
-    else
-      redirect_to managing_admin_vacancies_path, alert: "Уже назначен!"
-    end
+    vacancy.save
   end
 
   private
