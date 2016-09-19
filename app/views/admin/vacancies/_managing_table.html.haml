@@ -13,7 +13,7 @@
           %td
             = vacancy_full_info(vacancy)
           %td
-            - volunteers = vacancy.try(:volunteer).present? ? (without_vacancy << vacancy.try(:volunteer)) : Volunteer.without_vacancy
+            - volunteers = vacancy.try(:volunteer).present? ? (without_vacancy << vacancy.try(:volunteer)) : without_vacancy
             = f.input :vacancy_id, label: false, collection: volunteers, label_method: :full_info, value_method: :id, include_blank: "<ВЫБРАТЬ ДОБРОВОЛЬЦА>", selected: vacancy.volunteer_id, input_html: {id: "#{vacancy.id}"}
 
 
