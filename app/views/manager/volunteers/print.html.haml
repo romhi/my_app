@@ -22,6 +22,6 @@
         %td.td-nowrap
           = volunteer.phone
         %td
-          = volunteer.vacancy.try(:full_info).html_safe
+          = volunteer.vacancy.try(:full_info).try(:html_safe)
 
   = raw immediate_print
