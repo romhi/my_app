@@ -1,16 +1,16 @@
 = javascript_include_tag 'application', 'data-turbolinks-track' => true
 = stylesheet_link_tag    'admin', media: 'all'
 .portrait
-  %h1 Схема вакансий (#{@vacancies.count})
+  -#%h1 Схема вакансий (#{@vacancies.count})
 
 
-  %table.table.table-bordered(style="font-size: 10px")
+  %table.table.table-bordered(style="font-size: 12px")
     - @vacancies.each_with_index do |vacancy, index|
       %tr
         %td.td-18
           = index + 1
         %td
-          = vacancy_full_info(vacancy)
+          = vacancy_full_info(vacancy).html_safe
         %td
           = vacancy.volunteer.try(:full_info_for_print)
         %td

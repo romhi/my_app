@@ -16,7 +16,7 @@ class Volunteer < ActiveRecord::Base
   end
 
   def full_info_for_print
-    "#{congregation.city.region.name[0]}.обл. #{congregation.name} #{last_name.strip} #{first_name} #{age}л. / (#{responsibility.name}) /  время #{convenient_time}"
+    "#{congregation.city.region.name[0]}.обл. #{congregation.name} #{last_name.strip} #{first_name} #{age}л. / (#{responsibility.name})"
   end
 
   def convenient_time

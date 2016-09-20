@@ -1,13 +1,15 @@
 = javascript_include_tag 'application', 'data-turbolinks-track' => true
 = stylesheet_link_tag    'admin', media: 'all'
 .portrait
-  %h1 Добровольцы (#{@volunteers.count})
+  -#%h1 Добровольцы (#{@volunteers.count})
 
-  %table.table.table-bordered(style="font-size: 10px")
+  %table.table.table-bordered(style="font-size: 12px")
     %tr
       %th.td-18
       %th
         Сведения
+      %th
+        Время
       %th
         Телефон
       %th
@@ -19,9 +21,11 @@
           = index + 1
         %td
           = volunteer.full_info_for_print
+        %td
+          = volunteer.convenient_time
         %td.td-nowrap
           = volunteer.phone
         %td
-          = volunteer.vacancy.try(:full_info)
+          = volunteer.vacancy.try(:full_info).try(:html_safe)
 
   = raw immediate_print

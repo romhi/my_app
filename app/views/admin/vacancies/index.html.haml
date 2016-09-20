@@ -23,7 +23,7 @@
       %td.td-18
         = admin_edit_link(vacancy)
       %td
-        #{vacancy.number}) #{vacancy.name}
+        #{vacancy.number}) #{vacancy.name.html_safe}
       %td
         #{vacancy.starts_at.strftime("%H:%M")}-#{vacancy.ends_at.strftime("%H:%M")}
       %td
