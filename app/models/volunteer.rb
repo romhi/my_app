@@ -28,11 +28,11 @@ class Volunteer < ActiveRecord::Base
   end
 
   def self.without_vacancy
-    if Vacancy.where("volunteer_id is not null").pluck(:volunteer_id).count > 0
+    # if Vacancy.where("volunteer_id is not null").pluck(:volunteer_id).count > 0
       self.where("id not in (?)", Vacancy.where("volunteer_id is not null").pluck(:volunteer_id))
-    else
-      self.order(:congregation_id)
-    end
+    # else
+    #   self.order(:congregation_id)
+    # end
   end
 
 end
