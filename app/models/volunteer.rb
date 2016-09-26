@@ -12,7 +12,7 @@ class Volunteer < ActiveRecord::Base
                         :will_be_until_17, :outdoor, :phone, :responsibility_id
 
   def full_info
-    "#{congregation.city.region.name[0]}.обл. #{congregation.name} #{last_name.strip} #{first_name[0]} #{age}л. / (#{responsibility.name}) /  время #{convenient_time} #{"/ Улица" if outdoor == 1} / ком. #{comment}"
+    "#{congregation.city.region.name[0]}.обл. #{congregation.name} #{last_name.strip} #{first_name} #{age}л. / (#{responsibility.name}) /  время #{convenient_time} #{"/ Улица" if outdoor == 1} / #{comment}"
   end
 
   def full_info_for_print
@@ -28,11 +28,11 @@ class Volunteer < ActiveRecord::Base
   end
 
   def self.without_vacancy
-    # if Vacancy.where("volunteer_id is not null").pluck(:volunteer_id).count > 0
-      self.where("id not in (?)", Vacancy.where("volunteer_id is not null").pluck(:volunteer_id))
-    # else
-    #   self.order(:congregation_id)
-    # end
+    if Vacancy.where("volunteer_id is not null").pluck(:volunteer_id).count > 0
+      self.where("id not in (?)", Vacancy.where("volunteer_id is not null").pluck(:volunteer_id)).order(:congregation_id)
+    else
+      self.order(:congregation_id)
+    end
   end
 
 end
