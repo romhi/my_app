@@ -20,7 +20,7 @@ module Uploads
         vol.congregation = @client
         # up.upload_id = @upload.id
 
-        # begin
+        begin
           # Если в конце строки из excel прилетело число с .0 в конце, то обрезаем его
           # str_src = row[@number].to_s.strip
           # str_src.sub!(/.{2}$/,'') if /(\.0$)/ =~ str_src
@@ -35,7 +35,7 @@ module Uploads
           vol.will_be_until_17 = row[5].to_s.downcase == 'да' ? 1 : 0
           vol.outdoor = row[6].to_s.downcase == 'да' ? 1 : 0
           vol.car = row[7].to_s.downcase == 'да' ? 1 : 0
-          vol.phone = row[10].to_i.to_s.gsub(' ', '')
+          vol.phone = row[10].to_s.gsub(' ', '').insert(0, '(').insert(4, ') ').insert(9, '-')
           vol.comment = row[11].to_s
           # up.spare_number = str_src
           # up.status = " Номер указан неверно! " if not up.spare_number or not /(\w+|[0-9а-яА-Я]+)/=~ up.spare_number.to_s
@@ -73,9 +73,9 @@ module Uploads
           # up.spare_cars_list = row[@car_list]
 
           vol.save
-        # rescue Exception => e
-        #   puts e.message
-        # end
+        rescue Exception => e
+          puts e.message
+        end
       end
     end
 
