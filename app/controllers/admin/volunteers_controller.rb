@@ -64,6 +64,15 @@ class Admin::VolunteersController < ApplicationController
     render layout: false
   end
 
+  def load_xls
+    @congregation = Congregation.find params[:congregation_id]
+    Uploads::Manager.async_process_file params[:file], @congregation
+    # full_file_path = Uploads::Manager.save_file(params[:file])
+    # @upload = Upload.create!(:supplier_id => @client.id, storage_life_days: @client.store.storage_life_days)
+    # Uploads::Manager.process_file(full_file_path, @client, @upload)
+    redirect_to admin_volunteers_path, notice: "Файл принят в обработку!"
+  end
+
   private
 
   def params_volunteer

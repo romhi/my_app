@@ -67,3 +67,29 @@
 = link_to "Добавить", new_admin_volunteer_path, class: "btn btn-primary"
 = link_to "Печать", print_admin_volunteers_path, target: "_blank", class: "btn btn-default"
 = link_to "Печать схемы", print_managing_admin_volunteers_path, target: "_blank", class: "btn btn-default"
+
+= form_tag load_xls_admin_volunteers_path, :multipart => true, :id => "upload_form", :style => "margin: 20px 0 10px 0" do
+  %div(style="background-color: lightgray; border-radius: 5px; padding: 15px;     height: 70px;")
+    = select_tag :congregation_id, options_from_collection_for_select(Congregation.all, :id, :full_info)
+    %span#file_name
+      Файл не выбран
+    %span(style="float: right;")
+      %div(style="margin-top: -7px;")
+        %span.btn.btn-success.fileinput-button.pointer(style="margin-right: 10px;")
+          %i.fa.fa-plus
+          %span Выбрать...
+          = file_field_tag :file, id: "file"
+        %span.fileinput-button.pointer
+          = submit_tag "Отправить", class: 'btn btn-primary'
+
+:javascript
+
+  $(document).ready(function(){
+
+    $("#file").change(function (e) {
+      var file_name = this.files[0].name;
+      $("#file_name").html(file_name);
+
+    });
+
+  });

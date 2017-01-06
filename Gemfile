@@ -37,7 +37,7 @@ gem 'maskedinput-rails'
 gem 'momentjs-rails', '>= 2.9.0'
 gem "default_value_for", "~> 3.0.0"
 gem 'russian'
-
+gem 'spreadsheet'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -58,6 +58,7 @@ Rails.application.routes.draw do
       collection do
         get "print"
         get "print_managing"
+        post 'load_xls'
       end
     end
   end
