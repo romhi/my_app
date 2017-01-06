@@ -35,7 +35,7 @@ module Uploads
           vol.will_be_until_17 = row[5].to_s.downcase == 'да' ? 1 : 0
           vol.outdoor = row[6].to_s.downcase == 'да' ? 1 : 0
           vol.car = row[7].to_s.downcase == 'да' ? 1 : 0
-          vol.phone = row[10].instance_of?(String) ? row[10].gsub(' ', '').gsub('-', '').insert(0, '(').insert(4, ') ').insert(9, '-') : row[10].to_s.insert(0, '(').insert(4, ') ').insert(9, '-')
+          vol.phone = row[10].instance_of?(String) ? row[10].gsub(' ', '').gsub('-', '').insert(0, '(').insert(4, ') ').insert(9, '-') : row[10].to_i.to_s.insert(0, '(').insert(4, ') ').insert(9, '-')
           vol.comment = row[11].to_s
           # up.spare_number = str_src
           # up.status = " Номер указан неверно! " if not up.spare_number or not /(\w+|[0-9а-яА-Я]+)/=~ up.spare_number.to_s
