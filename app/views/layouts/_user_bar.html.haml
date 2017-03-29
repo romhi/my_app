@@ -25,6 +25,11 @@
     .btn-group.navbar-btn.pull-right.right-bar(title="Общее количество добровольцев")
       = link_to Volunteer.count, manager_volunteers_path, class: "btn btn-success"
 
+- else
+  .btn-group.navbar-btn.pull-right
+    = link_to "Войти", new_user_session_path, :class => "btn btn-default dropdown-toggle"
+
+
 
 
 

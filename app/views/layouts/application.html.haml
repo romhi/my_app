@@ -2,15 +2,19 @@
 %html
   %head
     %meta(charset="utf-8")
-    %title my_app
+    %title ИП Хитров разработка приложений RubyOnRails
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
     = render partial: 'layouts/default_main_menu'
+    = render partial: 'layouts/layout'
     .container
       .page-content
         .application
           = render partial: "layouts/flash_messages"
           = yield
+          %div(style="margin-top: 30px")
+            = render partial:  "layouts/mail_logo"
+
 
